@@ -1,6 +1,8 @@
 # DirectoryToolbox
 A tool to create and execute C# scripts on directories
 
+![An overview screenshot of DirectoryToolbox](doc/img/overview.png)
+
 ### Requirements
 To use DirectoryToolbox, you'll need .NET Framework 4.8. You can find it [on Microsoft's website](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48).
 
