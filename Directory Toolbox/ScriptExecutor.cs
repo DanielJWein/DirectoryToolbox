@@ -2,6 +2,7 @@
 using System.CodeDom.Compiler;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 
@@ -50,6 +51,7 @@ internal static class ScriptExecutor {
 
         // - Substep 2: Reflection -
         Type compClass = Compilation.CompiledAssembly.GetType("SN.SC");
+        Type cancelException = Compilation.CompiledAssembly.GetType("SN.CancelException");
 
         MethodInfo initializeFunc = compClass.GetMethod("Initialize");
         MethodInfo processDirFunc = compClass.GetMethod("ProcessDirectory");
@@ -62,10 +64,16 @@ internal static class ScriptExecutor {
         // - Substep 4: Execution -
         initializeFunc?.Invoke( null, new object[ ] { 7 } );
 
-        int folders = processDirectories( dirs, processDirFunc);
-
-        int files = processFiles( fils, processFileFunc);
-
+        int folders = 0, files =0;
+        try {
+            folders = processDirectories( dirs, processDirFunc );
+            files = processFiles( fils, processFileFunc );
+        }
+        catch ( TargetInvocationException x ) {
+            if ( x.InnerException.GetType( ) == cancelException ) {
+                return new( files, folders, "Cancelled", x.InnerException );
+            }
+        }
         // - Substep 5: Finalization -
         finalizeFunc?.Invoke( null, new object[ ] { 7 } );
 

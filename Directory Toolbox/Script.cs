@@ -24,6 +24,13 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace SN {
+    class CancelException : Exception {
+        public CancelException() : base(""The operation was cancelled."") {
+        }
+        public CancelException(string message) : base(message) {
+        }
+    }
+
     class SC {
 {CONTENT}
     }
