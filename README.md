@@ -24,3 +24,6 @@ On the right, there is the Options panel. At the top is the Path Box, where you 
 There's a checkbox labeled "Recurse" which will traverse subdirectories.
 
 Additionally, there's a checkbox "Mask" which shows the Mask box, where you can filter what files will be passed to `ProcessFile`. The mask is a standard Windows wildcard pattern.
+
+### Contributing
+Please open a Pull Request against the master branch.
