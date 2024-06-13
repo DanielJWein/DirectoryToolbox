@@ -34,6 +34,10 @@ namespace Directory_Toolbox {
         /// <param name="sender"> The button that was clicked </param>
         /// <param name="e">      Unused </param>
         private void clickDelete( object sender, EventArgs e ) {
+            if ( MessageBox.Show( "Really delete the script?", "Delete Script?", MessageBoxButtons.OKCancel ) != DialogResult.OK ) {
+                return;
+            }
+
             Script? s = getScriptFromControl(sender);
             if ( s is not null ) {
                 s.Delete( );

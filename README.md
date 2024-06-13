@@ -13,7 +13,7 @@ As long as the function returns `true`, it will continue processing directories 
 
 If it returns `false`, execution stops for that type of item.
 
-You can save your script with the 💾 button. Load it again with the 📝 button. Run it with ▶️, and delete it with 🗑️ (be careful, there's no confirmation)!
+You can save your script with the 💾 button. Load it again with the 📝 button. Run it with ▶️, and delete it with 🗑️.
 
 There are two functions that can be run before and after processing. These functions are `static void Initialize(object unused)` and `static void Finalize(object unused)`. You will need to define them yourself.
 
